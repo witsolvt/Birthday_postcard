@@ -29,8 +29,8 @@ const Candle: React.FC<CandleProps> = ({ number, className, isBlownOut = false }
 
   return (
     <div className={`relative flex flex-col items-center ${className}`}>
-      {/* Flame Group */}
-      <div className={`absolute -top-14 w-8 h-16 flex justify-center transition-all duration-300 ease-out ${isBlownOut ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}>
+      {/* Flame Group - Moved lower to sit closer to wick */}
+      <div className={`absolute -top-10 w-8 h-16 flex justify-center transition-all duration-300 ease-out ${isBlownOut ? 'opacity-0 scale-75' : 'opacity-100 scale-100'}`}>
          {/* Outer Glow */}
          <div className="absolute bottom-0 w-6 h-10 bg-orange-300/50 rounded-full blur-md animate-pulse"></div>
          {/* Main Flame */}
@@ -39,18 +39,19 @@ const Candle: React.FC<CandleProps> = ({ number, className, isBlownOut = false }
          <div className="absolute bottom-1 w-1.5 h-3 bg-blue-500/60 rounded-full blur-[1px]"></div>
       </div>
 
-      {/* Smoke Effect (Triggers when blown out) */}
+      {/* Smoke Effect (Triggers when blown out) - Adjusted position */}
       {isBlownOut && (
-        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-10 h-32 pointer-events-none">
+        <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-10 h-40 pointer-events-none">
             {/* Multiple smoke particles */}
-             <div className="absolute bottom-0 left-1/2 w-4 h-4 bg-gray-400/40 rounded-full blur-md animate-[smoke-rise_2s_ease-out_forwards]"></div>
-             <div className="absolute bottom-0 left-1/2 w-5 h-5 bg-gray-300/30 rounded-full blur-md animate-[smoke-rise_2.5s_ease-out_forwards_0.2s]"></div>
-             <div className="absolute bottom-2 left-1/2 w-3 h-3 bg-gray-500/20 rounded-full blur-sm animate-[smoke-rise_3s_ease-out_forwards_0.1s]"></div>
+             <div className="absolute bottom-0 left-1/2 w-4 h-4 bg-gray-400/50 rounded-full blur-md animate-[smoke-rise_3s_ease-out_forwards]"></div>
+             <div className="absolute bottom-0 left-1/2 w-5 h-5 bg-gray-300/40 rounded-full blur-md animate-[smoke-rise_3.5s_ease-out_forwards_0.2s]"></div>
+             <div className="absolute bottom-2 left-1/2 w-3 h-3 bg-gray-500/30 rounded-full blur-sm animate-[smoke-rise_4s_ease-out_forwards_0.4s]"></div>
+             <div className="absolute bottom-1 left-1/2 w-6 h-6 bg-gray-400/20 rounded-full blur-lg animate-[smoke-rise_4s_ease-out_forwards_0.1s]"></div>
         </div>
       )}
 
-      {/* Wick */}
-      <div className="w-1 h-3 bg-gray-800 -mb-1 z-10"></div>
+      {/* Wick - Pushed down to sit on number */}
+      <div className="w-1 h-3 bg-gray-800 -mb-3 z-10 translate-y-1"></div>
 
       {/* 3D Number Candle */}
       <div className="relative z-20 filter drop-shadow-lg">

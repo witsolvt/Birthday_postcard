@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import Cake from './components/Cake';
 import AnalogCounter from './components/AnalogCounter';
@@ -110,7 +111,7 @@ const App: React.FC = () => {
         
         <div className="relative inline-block">
              {/* Kitten sitting on top of the text box */}
-            <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-24 h-24 z-30 transition-transform duration-300 hover:scale-110">
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-36 h-36 z-30 transition-transform duration-300 hover:scale-110">
                 <Kitten className="w-full h-full" />
             </div>
 
@@ -148,7 +149,7 @@ const App: React.FC = () => {
 
         {audioAllowed && !isBlownOut && (
              <div className="text-gray-500 animate-pulse font-medium">
-                Foukněte do mikrofonu...
+                Foukni!
              </div>
         )}
 
@@ -181,8 +182,8 @@ const App: React.FC = () => {
         }
         @keyframes smoke-rise {
           0% { transform: translateY(0) scale(0.5); opacity: 0; }
-          20% { opacity: 0.6; }
-          100% { transform: translateY(-100px) scale(2.5); opacity: 0; }
+          10% { opacity: 0.8; }
+          100% { transform: translateY(-140px) scale(3); opacity: 0; }
         }
         @keyframes pop {
             0% { transform: scale(0.5); opacity: 0; }

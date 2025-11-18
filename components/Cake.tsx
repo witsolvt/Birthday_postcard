@@ -2,8 +2,6 @@
 import React from 'react';
 import Candle from './Candle';
 
-
-
 interface CakeProps {
   isBlownOut: boolean;
 }
@@ -21,7 +19,7 @@ const Cake: React.FC<CakeProps> = ({ isBlownOut }) => {
         />
 
         {/* Candles - Positioned relative to the image */}
-        <div className="absolute bottom-[85%] left-1/2 -translate-x-1/2 flex gap-4 z-40">
+        <div className="absolute bottom-[72%] left-1/2 -translate-x-1/2 flex gap-4 z-40 scale-[0.6] origin-bottom">
             <div className="transform -rotate-6 origin-bottom">
                 <Candle number="2" isBlownOut={isBlownOut} />
             </div>
