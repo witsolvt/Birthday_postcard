@@ -47,7 +47,8 @@ const App: React.FC = () => {
   const detectBlow = () => {
     if (!analyserRef.current || !dataArrayRef.current) return;
 
-    analyserRef.current.getByteFrequencyData(dataArrayRef.current);
+    // Fix TS error: cast to any to avoid mismatch between ArrayBuffer and ArrayBufferLike
+    analyserRef.current.getByteFrequencyData(dataArrayRef.current as any);
     
     // Simple algorithm: Check average volume
     let sum = 0;
