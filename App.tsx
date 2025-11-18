@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import Cake from './components/Cake';
 import AnalogCounter from './components/AnalogCounter';
@@ -10,6 +9,7 @@ const App: React.FC = () => {
   const ageBinary = (27).toString(2); // "11011"
   const [isBlownOut, setIsBlownOut] = useState(false);
   const [audioAllowed, setAudioAllowed] = useState(false);
+  const [micError, setMicError] = useState(false);
   
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
@@ -36,10 +36,11 @@ const App: React.FC = () => {
       sourceRef.current = source;
 
       setAudioAllowed(true);
+      setMicError(false);
       detectBlow();
     } catch (err) {
       console.error("Error accessing microphone:", err);
-      alert("Pro sfouknutí svíček je potřeba povolit mikrofon!");
+      setMicError(true);
     }
   };
 
@@ -124,13 +125,23 @@ const App: React.FC = () => {
 
       {/* Microphone Control & Relight */}
       <div className="mt-12 h-16 relative z-30 flex flex-col items-center justify-center">
-        {!audioAllowed && !isBlownOut && (
+        {!audioAllowed && !isBlownOut && !micError && (
             <button 
                 onClick={startListening}
                 className="px-8 py-3 bg-gradient-to-r from-orange-400 to-red-500 text-white font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all animate-bounce flex items-center gap-2"
             >
                 <span className="text-xl">🎤</span> 
                 <span>Sfouknout svíčky</span>
+            </button>
+        )}
+
+        {micError && !isBlownOut && (
+             <button 
+                onClick={() => setIsBlownOut(true)}
+                className="px-8 py-3 bg-gradient-to-r from-red-400 to-red-600 text-white font-bold rounded-full shadow-xl hover:scale-105 transition-all flex items-center gap-2"
+            >
+                <span className="text-xl">👆</span> 
+                <span>Sfouknout kliknutím</span>
             </button>
         )}
 
