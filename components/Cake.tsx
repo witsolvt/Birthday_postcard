@@ -15,7 +15,7 @@ const Cake: React.FC<CakeProps> = ({ isBlownOut }) => {
       <div className="relative transition-transform duration-500 hover:scale-105">
         
         <img 
-            src="/components/pictures/cake.png"
+            src="https://raw.githubusercontent.com/witsolvt/Birthday_postcard/main/components/pictures/cake.png" 
             alt="Birthday Cake" 
             className="w-72 h-auto object-contain drop-shadow-2xl"
         />
