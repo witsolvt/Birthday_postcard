@@ -1,0 +1,7 @@
+{
+  "name": "Birthday Postcard for Vašek",
+  "description": "A digital birthday postcard with a cake, burning candles, rotating binary for the age 27, and cute kittens. The text is in Czech.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
